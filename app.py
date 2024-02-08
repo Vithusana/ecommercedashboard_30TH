@@ -13,27 +13,13 @@ print(DATABASE)
 
 
 def query_db(query: str, args=()) -> list:
-    try:
-        with sqlite3.connect(DATABASE) as conn:
-            cursor = conn.cursor()
-            result = cursor.execute(query, args).fetchall()
-        return result
-    except sqlite3.Error as e:
-        logging.error("Database error: %s", e)
-        abort(500, description="Database error occurred.")
+    with sqlite3.connect(DATABASE) as conn:
+        cursor = conn.cursor()
+        result = cursor.execute(query, args).fetchall()
+    return result
 
 
 app = Flask(__name__)
-
-
-@app.errorhandler(404)
-def not_found(error):
-    return make_response(jsonify({"error": "Not found"}), 404)
-
-
-@app.errorhandler(500)
-def internal_error(error):
-    return make_response(jsonify({"error": "Internal server error"}), 500)
 
 
 @app.route("/")
@@ -49,15 +35,11 @@ def orders_over_time() -> Response:
     GROUP BY order_date
     ORDER BY order_date;
     """
-    try:
-        result = query_db(query)
-        print(result)
-        dates = [row[0] for row in result]
-        counts = [row[1] for row in result]
-        return jsonify({"dates": dates, "counts": counts})
-    except Exception as e:
-        logging.error("Error in /api/orders_over_time: %s", e)
-        abort(500, description="Error processing data.")
+    result = query_db(query)
+
+    dates = [row[0] for row in result]
+    counts = [row[1] for row in result]
+    return jsonify({"dates": dates, "counts": counts})
 
 
 @app.route("/api/low_stock_levels")
@@ -92,55 +74,6 @@ def most_popular_products_new() -> Response:
         for row in result
     ]
     return jsonify(products)
-
-
-@app.route("/api/revenue_generation")
-def revenue_generation() -> Response:
-    query = """
-    SELECT o.order_date, SUM(od.price_at_time * od.quantity_ordered) AS total_revenue
-    FROM order_details od
-    JOIN orders o ON od.order_id = o.order_id
-    GROUP BY o.order_date
-    ORDER BY o.order_date;
-    """
-    result = query_db(query)
-
-    dates = [row[0] for row in result]
-    revenues = [row[1] for row in result]
-    return jsonify({"dates": dates, "revenues": revenues})
-
-
-@app.route("/api/product_category_popularity")
-def product_category_popularity() -> Response:
-    query = """
-    SELECT pc.category_name, SUM(od.price_at_time * od.quantity_ordered) AS total_sales
-    FROM products p
-    JOIN product_categories pc ON p.category_id = pc.category_id
-    JOIN order_details od ON p.product_id = od.product_id
-    GROUP BY pc.category_name
-    ORDER BY total_sales DESC;
-    """
-    result = query_db(query)
-
-    categories = [row[0] for row in result]
-    sales = [row[1] for row in result]
-    return jsonify({"categories": categories, "sales": sales})
-
-
-@app.route("/api/payment_method_popularity")
-def payment_method_popularity() -> Response:
-    query = """
-    SELECT pm.method_name, COUNT(p.payment_id) AS transaction_count
-    FROM payments p
-    JOIN payment_methods pm ON p.method_id = pm.method_id
-    GROUP BY pm.method_name
-    ORDER BY transaction_count DESC;
-    """
-    result = query_db(query)
-
-    methods = [row[0] for row in result]
-    counts = [row[1] for row in result]
-    return jsonify({"methods": methods, "counts": counts})
 
 
 if __name__ == "__main__":
