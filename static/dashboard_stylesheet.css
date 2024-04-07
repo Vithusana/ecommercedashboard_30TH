@@ -4,14 +4,14 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
-}
+}   /* the body selector targets the entire web page*/
 
 .container {
   width: 100%;
   padding: 0;
   background-color: #fff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
+}       /*the container class provides a white background and subtle shadow*/
 
 /* Dashboard title */
 .dashboard-title {
@@ -19,7 +19,7 @@ body {
   font-size: 24px;
   margin-bottom: 20px;
   padding: 20px 0;
-  background-color: #333;
+  background-color: #33333353;  /*background colour and header colour are oppsing, therefore it's clear for users*/
   color: #fff;
 }
 
