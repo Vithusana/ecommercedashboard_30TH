@@ -293,3 +293,36 @@ INFO:werkzeug: * Detected change in 'c:\\Users\\I742136\\OneDrive - SAP SE\\UNI 
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 118-198-126
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 118-198-126
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 00:00:19] "GET /api/orders_over_time HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 00:01:11] "GET /api/orders_over_time HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 00:03:53] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 00:03:54] "GET /static/dashboard_stylesheet.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 00:03:54] "GET /static/dashboard-script.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 00:03:54] "GET /api/orders_over_time HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 00:03:54] "GET /api/low_stock_levels HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 00:03:54] "GET /api/most_popular_products HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 00:03:54] "GET /api/payment_method_popularity HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 00:03:54] "GET /api/product_category_popularity HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 00:03:54] "GET /api/revenue_generation HTTP/1.1" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): archive-api.open-meteo.com:443
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 00:03:54] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:https://archive-api.open-meteo.com:443 "GET /v1/archive?latitude=50.6053&longitude=-3.5952&start_date=2023-05-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=GMT HTTP/1.1" 200 None
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 00:03:54] "GET /api/temperature_over_time HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 13:49:30] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 13:49:30] "GET /static/dashboard_stylesheet.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 13:49:30] "GET /static/dashboard-script.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 13:49:30] "GET /api/low_stock_levels HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 13:49:30] "GET /api/orders_over_time HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 13:49:30] "GET /api/most_popular_products HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 13:49:30] "GET /api/revenue_generation HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 13:49:30] "GET /api/product_category_popularity HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 13:49:30] "GET /api/payment_method_popularity HTTP/1.1" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): archive-api.open-meteo.com:443
+DEBUG:urllib3.connectionpool:https://archive-api.open-meteo.com:443 "GET /v1/archive?latitude=50.6053&longitude=-3.5952&start_date=2023-05-01&end_date=2023-08-31&daily=temperature_2m_max&timezone=GMT HTTP/1.1" 200 None
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 13:49:31] "GET /api/temperature_over_time HTTP/1.1" 200 -
